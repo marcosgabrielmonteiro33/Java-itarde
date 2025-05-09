@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CollectionSortDemanda {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Demanda> demandas = new ArrayList<>();
+        List<demanda> demandas = new ArrayList<>();
 
         System.out.println("Digite quantas demandas deseja inserir: ");
         int t = scanner.nextInt();
@@ -35,18 +35,18 @@ public class CollectionSortDemanda {
             System.out.println("Tempo de espera:");
             int tempesp = scanner.nextInt();
 
-            demandas.add(new Demanda(tip, dised, diseq, custr, custim, prepr, regula, prejfisc, tempesp));
+            demandas.add(new demanda(tip, dised, diseq, custr, custim, prepr, regula, prejfisc, tempesp));
         }
 
         // Ordenar demandas por prioridade (decrescente)
-        Collections.sort(demandas, new Comparator<Demanda>() {
-            public int compare(Demanda d1, Demanda d2) {
+        Collections.sort(demandas, new Comparator<demanda>() {
+            public int compare(demanda d1, demanda d2) {
                 return Integer.compare(d2.calcularPrioridade(), d1.calcularPrioridade());
             }
         });
 
         System.out.println("Demandas ordenadas por prioridade:");
-        for (Demanda demanda : demandas) {
+        for (demanda demanda : demandas) {
             System.out.println(demanda);
         }
 

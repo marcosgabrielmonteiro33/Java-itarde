@@ -21,7 +21,7 @@ public class Main {
 
             switch (op) {
                 case 1:
-                    Demanda novaDemanda = EntradaDeDados.capturarDemanda();
+                    demanda novaDemanda = EntradaDeDados.capturarDemanda();
                     gerenciador.adicionarDemanda(novaDemanda);
                     break;
                 case 2:

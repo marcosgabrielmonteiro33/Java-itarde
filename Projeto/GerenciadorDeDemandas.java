@@ -5,13 +5,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GerenciadorDeDemandas {
-    private List<Demanda> demandas;
+    private List<demanda> demandas;
 
     public GerenciadorDeDemandas() {
         this.demandas = new ArrayList<>();
     }
 
-    public void adicionarDemanda(Demanda demanda) {
+    public void adicionarDemanda(demanda demanda) {
         demandas.add(demanda);
         System.out.println("Demanda adicionada com sucesso!");
         listarDemandas(); // Atualiza a lista viva
@@ -31,7 +31,7 @@ public class GerenciadorDeDemandas {
 
     public void ordenarDemandasPorPrioridade() {
         demandas = demandas.stream()
-                .sorted(Comparator.comparingInt(Demanda::calcularPrioridade).reversed())
+                .sorted(Comparator.comparingInt(demanda::calcularPrioridade).reversed())
                 .toList();
 
         System.out.println("Demandas ordenadas por prioridade com sucesso!");

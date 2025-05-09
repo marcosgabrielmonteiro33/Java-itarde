@@ -1,6 +1,6 @@
 package Projeto;
 
-public class Demanda {
+public class demanda {
     private int tip;
     private int dised;
     private int diseq;
@@ -11,7 +11,7 @@ public class Demanda {
     private int prejfisc;
     private int tempesp;
 
-    public Demanda(int tip, int dised, int diseq, int custr, int custim, int prepr, int regula, int prejfisc,
+    public demanda(int tip, int dised, int diseq, int custr, int custim, int prepr, int regula, int prejfisc,
             int tempesp) {
         this.tip = tip;
         this.dised = dised;
