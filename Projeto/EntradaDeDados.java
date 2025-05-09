@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class EntradaDeDados {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static Demanda capturarDemanda() {
+    public static demanda capturarDemanda() {
         try {
             System.out.println("Digite os atributos da nova demanda:");
             System.out.println("Tipo:");
@@ -28,7 +28,7 @@ public class EntradaDeDados {
             System.out.println("Tempo de espera:");
             int tempesp = scanner.nextInt();
 
-            return new Demanda(tip, dised, diseq, custr, custim, prepr, regula, prejfisc, tempesp);
+            return new demanda(tip, dised, diseq, custr, custim, prepr, regula, prejfisc, tempesp);
         } catch (InputMismatchException e) {
             System.out.println("Entrada inválida. Por favor, insira valores numéricos.");
             scanner.nextLine(); // Limpa o buffer
