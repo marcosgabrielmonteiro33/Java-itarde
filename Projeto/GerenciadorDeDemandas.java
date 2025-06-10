@@ -1,50 +1,32 @@
 package Projeto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class GerenciadorDeDemandas {
-    private List<demanda> demandas;
+    private Queue<Demanda> demandasEmAndamento;
+    private Queue<Demanda> demandasEmEspera;
 
     public GerenciadorDeDemandas() {
-        this.demandas = new ArrayList<>();
+        this.demandasEmAndamento = new PriorityQueue<>((d1, d2) -> Integer.compare(d2.calcularPrioridade(), d1.calcularPrioridade()));
+        this.demandasEmEspera = new PriorityQueue<>((d1, d2) -> Integer.compare(d2.calcularPrioridade(), d1.calcularPrioridade()));
     }
 
-    public void adicionarDemanda(demanda demanda) {
-        demandas.add(demanda);
-        System.out.println("Demanda adicionada com sucesso!");
-        listarDemandas(); // Atualiza a lista viva
+    public void adicionarDemanda(Demanda demanda, boolean emAndamento) {
+        if (emAndamento) {
+            demandasEmAndamento.offer(demanda);
+            System.out.println("Demanda adicionada à fila de andamento!");
+        } else {
+            demandasEmEspera.offer(demanda);
+            System.out.println("Demanda adicionada à fila de espera!");
+        }
     }
 
     public void listarDemandas() {
-        if (demandas.isEmpty()) {
-            System.out.println("Nenhuma demanda cadastrada.");
-            return;
-        }
+        System.out.println(" Demandas em andamento:");
+        demandasEmAndamento.forEach(System.out::println);
 
-        System.out.println("Demandas cadastradas:");
-        for (int i = 0; i < demandas.size(); i++) {
-            System.out.println(i + " - " + demandas.get(i));
-        }
-    }
-
-    public void ordenarDemandasPorPrioridade() {
-        demandas = demandas.stream()
-                .sorted(Comparator.comparingInt(demanda::calcularPrioridade).reversed())
-                .toList();
-
-        System.out.println("Demandas ordenadas por prioridade com sucesso!");
-        listarDemandas(); // Atualiza a lista viva
-    }
-
-    public void deletarDemanda(int index) {
-        if (index >= 0 && index < demandas.size()) {
-            demandas.remove(index);
-            System.out.println("Demanda deletada com sucesso!");
-            listarDemandas(); // Atualiza a lista viva
-        } else {
-            System.out.println("Índice inválido. Tente novamente.");
-        }
+        System.out.println(" Demandas em espera:");
+        demandasEmEspera.forEach(System.out::println);
     }
 }
